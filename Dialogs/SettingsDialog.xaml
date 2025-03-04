@@ -1,0 +1,13 @@
+﻿<Window x:Class="SharpPixilizer.SettingsDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Параметры" Height="300" Width="400">
+    <TabControl x:Name="TabControl">
+        <TabItem Header="Общие">
+            <TextBlock Text="не реализовано" Margin="10"/>
+        </TabItem>
+        <TabItem Header="Комбинации клавиш">
+            <TextBlock Text="не реализовано" Margin="10"/>
+        </TabItem>
+    </TabControl>
+</Window>
