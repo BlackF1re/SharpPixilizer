@@ -1,0 +1,82 @@
+﻿<Window x:Class="SharpPixilizer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:SharpPixilizer"
+        Title="SharpPixilizer" Height="600" Width="800">
+    <DockPanel>
+        <!-- Меню приложения -->
+        <Menu DockPanel.Dock="Top">
+            <!-- Файл -->
+            <MenuItem Header="Файл">
+                <MenuItem Header="Создать..." InputGestureText="Ctrl+N" Click="NewButton_Click"/>
+                <MenuItem Header="Открыть..." InputGestureText="Ctrl+O" Click="OpenButton_Click"/>
+                <MenuItem Header="Недавние файлы" Name="RecentFilesMenu"/>
+                <MenuItem Header="Изменить размер" Click="ChangeSizeButton_Click"/>
+            </MenuItem>
+            <!-- Правка -->
+            <MenuItem Header="Правка">
+                <MenuItem Header="Отменить" InputGestureText="Ctrl+Z" Click="UndoButton_Click"/>
+                <MenuItem Header="Вернуть" InputGestureText="Ctrl+Y" Click="RedoButton_Click"/>
+                <MenuItem Header="История действий" Click="HistoryButton_Click"/>
+                <Separator/>
+                <MenuItem Header="Вырезать" InputGestureText="Ctrl+X" Click="CutButton_Click"/>
+                <MenuItem Header="Копировать" InputGestureText="Ctrl+C" Click="CopyButton_Click"/>
+                <MenuItem Header="Копировать видимое" Click="CopyVisibleButton_Click"/>
+                <Separator/>
+                <MenuItem Header="Очистить" InputGestureText="Delete" Click="ClearButton_Click"/>
+                <Separator/>
+                <MenuItem Header="Параметры" Click="SettingsButton_Click"/>
+                <MenuItem Header="Комбинации клавиш" Click="KeyboardShortcutsButton_Click"/>
+            </MenuItem>
+            <!-- Выделение -->
+            <MenuItem Header="Выделение">
+                <MenuItem Header="Выделить всё" InputGestureText="Ctrl+A" Click="SelectAllButton_Click"/>
+                <MenuItem Header="Снять выделение" Click="DeselectButton_Click"/>
+                <MenuItem Header="Инвертировать" Click="InvertSelectionButton_Click"/>
+                <Separator/>
+                <MenuItem Header="Закруглить прямоугольник" Click="RoundRectangleButton_Click"/>
+            </MenuItem>
+            <!-- Просмотр -->
+            <MenuItem Header="Просмотр">
+                <MenuItem Header="Масштаб">
+                    <MenuItem Header="Увеличить" Click="ZoomInButton_Click"/>
+                    <MenuItem Header="Уменьшить" Click="ZoomOutButton_Click"/>
+                    <MenuItem Header="100%" Click="Zoom100Button_Click"/>
+                </MenuItem>
+                <MenuItem Header="Зеркальное отображение и вращение">
+                    <MenuItem Header="Откатить зеркальное отображение и вращение" Click="ResetMirrorRotateButton_Click"/>
+                    <MenuItem Header="Зеркальное отображение по горизонтали" Click="MirrorHorizontalButton_Click"/>
+                    <MenuItem Header="Зеркальное отображение по вертикали" Click="MirrorVerticalButton_Click"/>
+                    <MenuItem Header="Повернуть на 150° по часовой стрелке" Click="Rotate150CWButton_Click"/>
+                    <MenuItem Header="Повернуть на 150° против часовой стрелки" Click="Rotate150CCWButton_Click"/>
+                    <MenuItem Header="Повернуть на 90° по часовой стрелке" Click="Rotate90CWButton_Click"/>
+                    <MenuItem Header="Повернуть на 90° против часовой стрелки" Click="Rotate90CCWButton_Click"/>
+                    <MenuItem Header="Повернуть на 180°" Click="Rotate180Button_Click"/>
+                    <MenuItem Header="Другой угол вращения..." Click="CustomRotateButton_Click"/>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Центрировать изображение в окне" Click="CenterImageButton_Click"/>
+                <MenuItem Header="Сократить окно по изображению" Click="FitWindowToImageButton_Click"/>
+                <MenuItem Header="Во весь экран" Click="FullscreenButton_Click"/>
+                <Separator/>
+                <MenuItem Header="Показывать направляющие" Click="ToggleGuidesButton_Click"/>
+            </MenuItem>
+            <!-- Инструменты -->
+            <MenuItem Header="Инструменты">
+                <MenuItem Header="Выделение">
+                    <MenuItem Header="Прямоугольное выделение" Click="RectangularSelectionButton_Click"/>
+                    <MenuItem Header="Свободное выделение" Click="FreeSelectionButton_Click"/>
+                </MenuItem>
+                <MenuItem Header="Рисование">
+                    <MenuItem Header="Кисть" Click="PencilButton_Click"/>
+                    <MenuItem Header="Прямая" Click="LineButton_Click"/>
+                    <MenuItem Header="Заливка" Click="FillButton_Click"/>
+                    <MenuItem Header="Прямоугольник" Click="RectangleButton_Click"/>
+                    <MenuItem Header="Эллипс" Click="EllipseButton_Click"/>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        <!-- Холст с сеткой -->
+        <local:GridCanvas x:Name="DrawingCanvas"/>
+    </DockPanel>
+</Window>

@@ -1,0 +1,19 @@
+﻿<Window x:Class="SharpPixilizer.GridSizeDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Изменить размер сетки" Height="150" Width="300">
+    <StackPanel Margin="10">
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <Label Content="Столбцов:" Width="80"/>
+            <TextBox x:Name="ColumnsTextBox" Width="100"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <Label Content="Строк:" Width="80"/>
+            <TextBox x:Name="RowsTextBox" Width="100"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+            <Button Content="OK" Width="60" Click="OKButton_Click" Margin="5"/>
+            <Button Content="Отмена" Width="60" Click="CancelButton_Click" Margin="5"/>
+        </StackPanel>
+    </StackPanel>
+</Window>
