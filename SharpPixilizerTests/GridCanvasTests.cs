@@ -1,9 +1,5 @@
 ﻿using SharpPixilizer;
-using System;
-using System.Collections.Generic;
-using System.Threading;
 using System.Windows;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace SharpPixilizerTests
 {
@@ -23,7 +19,7 @@ namespace SharpPixilizerTests
             thread.Join();
 
             if (threadEx != null)
-                throw new AssertFailedException("STA-поток выбросил исключение", threadEx);
+                throw new AssertFailedException("STA thread trowed an exception", threadEx);
         }
 
         private bool[,] GetGridState(GridCanvas canvas) => canvas.gridState;
@@ -373,8 +369,7 @@ namespace SharpPixilizerTests
                 canvas.SetGridSize(5, 5);
 
                 var expected = new bool[5, 5];
-                // Заполняем вручную клетки, попадающие в эллипс по логике DrawEllipse
-                // Примерный эллипс с центром около (2,2), a = 2, b = 2
+
                 expected[1, 1] = true;
                 expected[2, 1] = true;
                 expected[3, 1] = true;
