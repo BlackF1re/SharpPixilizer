@@ -19,7 +19,8 @@ namespace SharpPixilizerTests
             thread.Join();
 
             if (threadEx != null)
-                throw new AssertFailedException("STA thread trowed an exception", threadEx);
+                //Console.WriteLine("STA exception: " + threadEx);
+            throw new AssertFailedException("STA thread trowed an exception", threadEx);
         }
 
         private bool[,] GetGridState(GridCanvas canvas) => canvas.gridState;
@@ -360,30 +361,25 @@ namespace SharpPixilizerTests
                 AssertGridStateEquals(expected, GetGridState(canvas));
             });
         }
+
         [TestMethod]
-        public void DrawEllipse_SmallEllipse_FillsCorrectCells()
+        public void DrawEllipse_FullGrid5x5_CorrectCellsFilled()
         {
             RunInSta(() =>
             {
                 var canvas = new GridCanvas();
                 canvas.SetGridSize(5, 5);
 
-                var expected = new bool[5, 5];
-
-                expected[1, 1] = true;
-                expected[2, 1] = true;
-                expected[3, 1] = true;
-
-                expected[1, 2] = true;
-                expected[2, 2] = true;
-                expected[3, 2] = true;
-
-                expected[1, 3] = true;
-                expected[2, 3] = true;
-                expected[3, 3] = true;
+                var expected = new bool[5, 5]
+                {
+            { false, false,  true, false, false },
+            { false,  true,  true,  true, false },
+            {  true,  true,  true,  true,  true },
+            { false,  true,  true,  true, false },
+            { false, false,  true, false, false }
+                };
 
                 canvas.DrawEllipse(0, 0, 4, 4, true);
-
                 AssertGridStateEquals(expected, canvas.gridState);
             });
         }

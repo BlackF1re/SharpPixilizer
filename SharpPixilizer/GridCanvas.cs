@@ -300,29 +300,29 @@ namespace SharpPixilizer
                         gridState[i, j] = drawWhite;
         }
 
-        internal void DrawEllipse(int x0, int y0, int x1, int y1, bool drawWhite)
-        {
-            int startX = Math.Min(x0, x1), endX = Math.Max(x0, x1);
-            int startY = Math.Min(y0, y1), endY = Math.Max(y0, y1);
-            double a = (endX - startX) / 2.0;
-            double b = (endY - startY) / 2.0;
-            double centerX = startX + a;
-            double centerY = startY + b;
-            if (a == 0 || b == 0)
+            internal void DrawEllipse(int x0, int y0, int x1, int y1, bool drawWhite)
             {
-                DrawRectangle(x0, y0, x1, y1, drawWhite);
-                return;
-            }
-            for (int i = startX; i <= endX; i++)
-                for (int j = startY; j <= endY; j++)
+                int startX = Math.Min(x0, x1), endX = Math.Max(x0, x1);
+                int startY = Math.Min(y0, y1), endY = Math.Max(y0, y1);
+                double a = (endX - startX) / 2.0;
+                double b = (endY - startY) / 2.0;
+                double centerX = startX + a;
+                double centerY = startY + b;
+                if (a == 0 || b == 0)
                 {
-                    double normX = (i - centerX) / a;
-                    double normY = (j - centerY) / b;
-                    if (normX * normX + normY * normY <= 1.0)
-                        if (i >= 0 && i < GridColumns && j >= 0 && j < GridRows)
-                            gridState[i, j] = drawWhite;
+                    DrawRectangle(x0, y0, x1, y1, drawWhite);
+                    return;
                 }
-        }
+                for (int i = startX; i <= endX; i++)
+                    for (int j = startY; j <= endY; j++)
+                    {
+                        double normX = (i - centerX) / a;
+                        double normY = (j - centerY) / b;
+                        if (normX * normX + normY * normY <= 1.0)
+                            if (i >= 0 && i < GridColumns && j >= 0 && j < GridRows)
+                                gridState[i, j] = drawWhite;
+                    }
+            }
 
         // Превью рисования
         internal void DrawLinePreview(DrawingContext dc, int startX, int startY, int endX, int endY, Brush previewBrush)
