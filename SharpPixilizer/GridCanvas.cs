@@ -404,7 +404,6 @@ namespace SharpPixilizer
 
         internal void ChangeGridSize()
         {
-            // Циклическое изменение размера как пример
             if (GridColumns == 96 && GridRows == 16)
                 SetGridSize(128, 32);
             else if (GridColumns == 128 && GridRows == 32)

@@ -111,8 +111,8 @@ namespace SharpPixilizer
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            SettingsDialog dlg = new SettingsDialog();
-            dlg.ShowDialog();
+            //SettingsDialog dlg = new SettingsDialog();
+            //dlg.ShowDialog();
         }
 
         private void KeyboardShortcutsButton_Click(object sender, RoutedEventArgs e)
